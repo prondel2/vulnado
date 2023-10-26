@@ -17,7 +17,8 @@ jobs:
     - name: Build the Docker image
       run: |
         docker build . --file Dockerfile --tag vulnado:$(date +%s)
-        docker save vulnado:$(date +%s) > vulnado.tar
+        docker save -o vulnado.tar vulnado:$(date +%s)
+        ls
 
       # Run Orca CLI against the previously created container image
     - name: Orca CLI - Security Scanning
@@ -27,4 +28,5 @@ jobs:
         set +e
         apt update && apt install -y curl
         curl -sfL 'https://raw.GitHubusercontent.com/orcasecurity/orca-cli/main/install.sh' | bash
+        ls
         orca-cli -p default image scan vulnado.tar --tar-archive
