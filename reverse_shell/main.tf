@@ -39,6 +39,11 @@ resource "aws_subnet" "subnet" {
     Name = "tmp_vulnado_rev_shell_subnet"
   }
 }
+resource "aws_rds_cluster" "app2-rds-cluster" {
+  cluster_identifier      = "app2-rds-cluster"
+  allocated_storage       = 10
+  backup_retention_period = 1
+}
 
 resource "aws_route_table_association" "assoc" {
   subnet_id      = "${aws_subnet.subnet.id}"
