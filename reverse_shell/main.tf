@@ -11,7 +11,7 @@ resource "aws_vpc" "main" {
 
 resource "aws_rds_cluster" "app2-rds-cluster" {
   cluster_identifier      = "app2-rds-cluster"
-  allocated_storage       = 15
+  allocated_storage       = 10
   backup_retention_period = 1
 }
 
