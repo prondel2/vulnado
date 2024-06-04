@@ -9,6 +9,12 @@ resource "aws_vpc" "main" {
   }
 }
 
+resource "aws_rds_cluster" "app2-rds-cluster" {
+  cluster_identifier      = "app2-rds-cluster"
+  allocated_storage       = 10
+  backup_retention_period = 1
+}
+
 resource "aws_internet_gateway" "gw" {
   vpc_id = "${aws_vpc.main.id}"
 
